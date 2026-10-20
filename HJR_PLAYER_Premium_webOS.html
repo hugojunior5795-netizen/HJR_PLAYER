@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>HJR PLAYER Premium</title>
+<style>
+:root{--red:#ed1020;--bg:#080808;--panel:#141414;--panel2:#1d1d1d;--muted:#a5a5a5;--white:#f8f8f8}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
+body{font-size:16px}button,input,select{font:inherit}button{cursor:pointer}
+header{height:78px;padding:0 4.5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525;background:#0b0b0b}
+.logo{font-size:29px;font-weight:900;letter-spacing:1.6px}.logo span{color:var(--red)}.header-right{color:#aaa;font-size:13px}
+main{width:min(1500px,94%);margin:auto;padding:26px 0 38px}
+.hero{position:relative;overflow:hidden;min-height:205px;border-radius:18px;padding:30px 34px;background:linear-gradient(100deg,#34070b 0%,#1b080a 43%,#111 100%);border:1px solid #4a1b20;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.hero:after{content:"HJR";position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:clamp(100px,18vw,230px);font-weight:900;color:rgba(255,255,255,.035);pointer-events:none}
+.eyebrow{color:#ff7a83;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.05;margin:10px 0}.hero p{color:#c8c8c8;max-width:560px;line-height:1.5;margin:0}.hero-mark{position:relative;z-index:1;border:2px solid #642028;border-radius:50%;width:116px;height:116px;display:grid;place-items:center;font-size:30px;font-weight:900;flex-shrink:0}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.nav button,.btn{border:1px solid #333;background:#171717;color:#eee;border-radius:10px;padding:12px 18px}.nav button.active,.btn.primary{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}.nav button:focus-visible,.btn:focus-visible,.channel:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ff6b75;outline-offset:3px}
+.columns{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(330px,1fr);gap:20px}.panel{background:var(--panel);border:1px solid #2b2b2b;border-radius:15px;padding:20px;min-width:0}.panel h2{font-size:20px;margin:0 0 15px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.panel-head h2{margin:0}.subtle{font-size:12px;color:var(--muted)}
+.video-frame{background:#000;border:1px solid #303030;border-radius:12px;overflow:hidden}.video-frame video{display:block;width:100%;aspect-ratio:16/9;background:#000}.now{padding:13px 15px;background:#101010}.now strong{display:block;font-size:17px;margin-bottom:5px}.now span{color:#aaa;font-size:13px}
+.player-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:13px}.field.full{grid-column:1/-1}label{display:block;color:#c7c7c7;font-size:13px;margin-bottom:7px}input,select{width:100%;min-width:0;border-radius:9px;border:1px solid #3a3a3a;background:#090909;color:#fff;padding:12px}input[type=file]{font-size:12px}
+.status{white-space:pre-wrap;color:#ffb6bb;font-size:13px;line-height:1.5;margin-top:10px}.help{color:#999;font-size:12px;line-height:1.55;margin:13px 0 0}
+.list-tools{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:14px}.channel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-height:510px;overflow:auto;padding:3px}
+.channel{min-height:76px;display:flex;align-items:center;gap:12px;text-align:left;background:#1a1a1a;color:#f7f7f7;border:1px solid #333;border-radius:11px;padding:12px;min-width:0}
+.channel:hover,.channel.selected{border-color:var(--red);background:#2b1013}.channel-logo{width:44px;height:44px;flex-shrink:0;border-radius:9px;background:#292929;display:grid;place-items:center;color:#ff4652;font-weight:900;overflow:hidden}.channel-logo img{width:100%;height:100%;object-fit:contain}.channel-name{font-size:14px;font-weight:700;overflow-wrap:anywhere}.channel-group{font-size:11px;color:#aaa;margin-top:5px}
+.empty{grid-column:1/-1;text-align:center;border:1px dashed #383838;border-radius:10px;padding:32px 15px;color:#999;line-height:1.6}
+.hidden{display:none!important}footer{text-align:center;color:#666;font-size:12px;padding:24px 10px 30px}
+@media(max-width:900px){.columns{grid-template-columns:1fr}.hero-mark{display:none}.channel-grid{max-height:420px}}
+@media(max-width:560px){header{height:66px;padding:0 4%}.logo{font-size:23px}.header-right{font-size:11px}main{width:92%;padding-top:18px}.hero{padding:23px 20px;min-height:0}.fields,.list-tools{grid-template-columns:1fr}.channel-grid{grid-template-columns:1fr}.panel{padding:15px}.nav button{padding:10px 12px}}
+</style>
+</head>
+<body>
+<header><div class="logo">HJR <span>PLAYER</span></div><div class="header-right">PREMIUM • WEBOS READY</div></header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">Sua central de entretenimento</div><h1>O seu conteúdo.<br>Do seu jeito.</h1><p>Organize sua lista autorizada em uma interface moderna, com navegação simples e cartões de canais.</p></div>
+ <div class="hero-mark">HJR</div>
+</section>
+<nav class="nav" aria-label="Seções">
+ <button class="active" data-view="home">Início</button><button data-view="live">TV ao vivo</button><button data-view="library">Minha lista</button><button data-view="settings">Adicionar lista</button>
+</nav>
+<section class="columns">
+ <div class="panel" id="main-panel">
+  <div class="panel-head"><h2 id="section-title">Assistir agora</h2><span class="subtle" id="loaded-count">0 canais</span></div>
+  <div class="video-frame"><video id="video" controls playsinline tabindex="0"></video><div class="now"><strong id="now-title">Bem-vindo ao HJR PLAYER</strong><span id="now-subtitle">Carregue sua lista para começar a assistir.</span></div></div>
+  <div class="player-actions"><button class="btn" id="stop">Parar</button><button class="btn" id="back-to-list">Ver canais</button></div>
+  <p class="help">A reprodução depende do formato do stream e das permissões do servidor. A versão web não garante suporte a todos os formatos IPTV.</p>
+ </div>
+ <div class="panel" id="list-panel">
+  <div class="panel-head"><h2 id="list-title">Canais disponíveis</h2><span class="subtle">HJR</span></div>
+  <div class="list-tools"><input id="search" placeholder="Buscar canal..." aria-label="Buscar canal"><select id="group-filter" aria-label="Filtrar categoria"><option value="">Todas as categorias</option></select></div>
+  <div class="channel-grid" id="channels"><div class="empty">Nenhum canal carregado.<br>Vá em <b>Adicionar lista</b> para importar sua M3U ou conectar Xtream Codes.</div></div>
+ </div>
+</section>
+<section class="panel hidden" id="settings-panel" style="margin-top:20px">
+ <div class="panel-head"><h2>Adicionar sua lista</h2><span class="subtle">Use dados autorizados</span></div>
+ <div class="nav" style="margin:0 0 18px"><button class="active" data-method="m3u">Lista M3U</button><button data-method="xtream">Xtream Codes</button></div>
+ <div id="m3u-form">
+  <div class="fields"><div class="field full"><label for="m3u-url">URL da lista M3U</label><input id="m3u-url" type="url" placeholder="https://servidor.exemplo/lista.m3u"></div><div class="field"><label for="m3u-file">Ou arquivo M3U</label><input id="m3u-file" type="file" accept=".m3u,.m3u8,.txt"></div><div class="field"><label for="playlist-name">Nome da lista (opcional)</label><input id="playlist-name" placeholder="Minha lista"></div></div>
+  <div class="player-actions"><button class="btn primary" id="load-url">Carregar URL</button><button class="btn" id="load-file">Abrir arquivo</button></div><div class="status" id="m3u-status"></div>
+ </div>
+ <div id="xtream-form" class="hidden">
+  <div class="fields"><div class="field full"><label for="xt-host">Servidor (URL)</label><input id="xt-host" placeholder="https://servidor.exemplo:8080"></div><div class="field"><label for="xt-user">Usuário</label><input id="xt-user" autocomplete="off"></div><div class="field"><label for="xt-pass">Senha</label><input id="xt-pass" type="password" autocomplete="off"></div></div>
+  <div class="player-actions"><button class="btn primary" id="connect-xt">Conectar e carregar canais</button></div><div class="status" id="xt-status"></div>
+  <p class="help">As credenciais são usadas pelo código no seu navegador para consultar o servidor. Não use em dispositivos compartilhados. Alguns servidores bloqueiam acesso por navegador (CORS).</p>
+ </div>
+ <p class="help">Esta página não fornece canais, listas nem assinaturas. Não salvamos sua lista ao fechar a página.</p>
+</section>
+</main>
+<footer>HJR PLAYER PREMIUM • Protótipo web independente</footer>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+const $=id=>document.getElementById(id);let items=[],hls=null,selected=-1;
+function note(id,s){$(id).textContent=s||''}
+function parseM3U(txt){let out=[],meta=null;for(let raw of txt.replace(/^\\uFEFF/,'').split(/\\r?\\n/)){let line=raw.trim();if(!line)continue;if(line.startsWith('#EXTINF')){let comma=line.lastIndexOf(',');let name=comma>=0?line.slice(comma+1).trim():'Canal';let a={};for(let m of line.matchAll(/([\\w-]+)="([^"]*)"/g))a[m[1]]=m[2];meta={name:name||'Canal',group:a['group-title']||'Sem categoria',logo:a['tvg-logo']||''}}else if(!line.startsWith('#')){out.push({name:meta?.name||line,group:meta?.group||'Sem categoria',logo:meta?.logo||'',url:line});meta=null}}return out}
+function render(){let q=$('search').value.toLowerCase().trim(),g=$('group-filter').value;let arr=items.map((v,i)=>({...v,i})).filter(x=>(!q||x.name.toLowerCase().includes(q))&&(!g||x.group===g));$('loaded-count').textContent=items.length+' canais';$('list-title').textContent='Canais ('+arr.length+')';let root=$('channels');root.innerHTML='';if(!arr.length){root.innerHTML='<div class="empty">Nenhum canal para mostrar.<br>Importe uma lista ou ajuste os filtros.</div>';return}arr.forEach(x=>{let b=document.createElement('button');b.className='channel'+(x.i===selected?' selected':'');b.type='button';let icon=document.createElement('span');icon.className='channel-logo';if(x.logo){let im=document.createElement('img');im.src=x.logo;im.alt='';im.onerror=()=>{icon.textContent='HJR'};icon.append(im)}else icon.textContent='▶';let txt=document.createElement('span');txt.style.minWidth='0';let n=document.createElement('div');n.className='channel-name';n.textContent=x.name;let c=document.createElement('div');c.className='channel-group';c.textContent=x.group;txt.append(n,c);b.append(icon,txt);b.onclick=()=>play(x.i);root.append(b)})}
+function setItems(list,label){items=list;selected=-1;let gs=[...new Set(items.map(x=>x.group||'Sem categoria'))].sort();$('group-filter').innerHTML='<option value="">Todas as categorias</option>';gs.forEach(g=>{let o=document.createElement('option');o.value=g;o.textContent=g;$('group-filter').append(o)});$('now-title').textContent='Lista carregada';$('now-subtitle').textContent=label||items.length+' canais prontos';render();note('m3u-status','');note('xt-status','')}
+function play(i){let x=items[i];if(!x)return;selected=i;if(hls){hls.destroy();hls=null}let v=$('video');v.pause();v.removeAttribute('src');v.load();$('now-title').textContent=x.name;$('now-subtitle').textContent=x.group||'TV ao vivo';if(window.Hls&&Hls.isSupported()&&/\\.m3u8($|\\?)/i.test(x.url)){hls=new Hls();hls.loadSource(x.url);hls.attachMedia(v);hls.on(Hls.Events.MANIFEST_PARSED,()=>v.play().catch(()=>{}));hls.on(Hls.Events.ERROR,(e,d)=>{if(d.fatal)$('now-subtitle').textContent='Não foi possível reproduzir. Verifique o stream.'})}else{v.src=x.url;v.play().catch(()=>$('now-subtitle').textContent='Pressione reproduzir ou verifique o formato do canal.')}render()}
+function showView(v){$('settings-panel').classList.toggle('hidden',v!=='settings');$('main-panel').classList.toggle('hidden',v==='settings');$('list-panel').classList.toggle('hidden',v==='settings');$('section-title').textContent=v==='live'?'TV ao vivo':v==='library'?'Minha lista':'Assistir agora';document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(v==='settings')$('settings-panel').scrollIntoView({behavior:'smooth',block:'start'});else $('main-panel').scrollIntoView({behavior:'smooth',block:'start'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
+document.querySelectorAll('[data-method]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-method]').forEach(x=>x.classList.toggle('active',x===b));$('m3u-form').classList.toggle('hidden',b.dataset.method!=='m3u');$('xtream-form').classList.toggle('hidden',b.dataset.method!=='xtream')});
+$('search').oninput=render;$('group-filter').onchange=render;$('back-to-list').onclick=()=>$('list-panel').scrollIntoView({behavior:'smooth',block:'start'});
+$('stop').onclick=()=>{if(hls){hls.destroy();hls=null}let v=$('video');v.pause();v.removeAttribute('src');v.load();selected=-1;$('now-title').textContent='Reprodução parada';$('now-subtitle').textContent='Escolha outro canal para continuar.';render()};
+$('load-url').onclick=async()=>{let url=$('m3u-url').value.trim();if(!url){note('m3u-status','Cole a URL da sua lista M3U.');return}note('m3u-status','Carregando lista...');try{let r=await fetch(url);if(!r.ok)throw Error('HTTP '+r.status);let list=parseM3U(await r.text());if(!list.length)throw Error('Nenhum canal encontrado.');setItems(list,$('playlist-name').value||'Lista M3U');note('m3u-status',list.length+' canais carregados.')}catch(e){note('m3u-status','Não foi possível carregar a URL: '+e.message+'. Se o navegador bloquear por CORS, tente o arquivo M3U ou consulte seu provedor.')}};
+$('load-file').onclick=async()=>{let f=$('m3u-file').files[0];if(!f){note('m3u-status','Selecione um arquivo primeiro.');return}try{let list=parseM3U(await f.text());if(!list.length)throw Error('Nenhum canal encontrado no arquivo.');setItems(list,$('playlist-name').value||f.name);note('m3u-status',list.length+' canais importados.')}catch(e){note('m3u-status',e.message)}};
+$('connect-xt').onclick=async()=>{let host=$('xt-host').value.trim().replace(/\\/+$/,''),u=$('xt-user').value.trim(),p=$('xt-pass').value;if(!host||!u||!p){note('xt-status','Preencha servidor, usuário e senha.');return}note('xt-status','Conectando...');try{let base=host+'/player_api.php?username='+encodeURIComponent(u)+'&password='+encodeURIComponent(p);let a=await fetch(base);if(!a.ok)throw Error('HTTP '+a.status);let auth=await a.json();if(auth.user_info&&auth.user_info.auth===0)throw Error('Credenciais recusadas.');let cr=await fetch(base+'&action=get_live_categories'),cats=cr.ok?await cr.json():[],map={};if(Array.isArray(cats))cats.forEach(c=>map[String(c.category_id)]=c.category_name);let r=await fetch(base+'&action=get_live_streams');if(!r.ok)throw Error('Falha ao buscar canais.');let streams=await r.json();if(!Array.isArray(streams)||!streams.length)throw Error('Nenhum canal retornado.');let list=streams.map(s=>({name:s.name||'Canal',group:map[String(s.category_id)]||'TV ao vivo',logo:s.stream_icon||'',url:host+'/live/'+encodeURIComponent(u)+'/'+encodeURIComponent(p)+'/'+s.stream_id+'.'+(s.container_extension||'m3u8')}));setItems(list,'Xtream Codes');note('xt-status',list.length+' canais carregados.')}catch(e){note('xt-status','Falha na conexão: '+e.message+'. O servidor pode bloquear navegador (CORS) ou exigir outra configuração.')}};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){showView('home')}});
+</script>
+</body></html>
