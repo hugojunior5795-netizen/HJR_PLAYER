@@ -1,0 +1,11 @@
+
+{
+  "id": "com.hjr.player",
+  "version": "1.0.0",
+  "vendor": "HJR",
+  "type": "web",
+  "main": "index.html",
+  "title": "HJR PLAYER",
+  "icon": "icon.png",
+  "resolution": "1920x1080"
+}
